@@ -1,0 +1,99 @@
+/* body margin */
+body {
+    margin: 20px;
+}
+
+/* section border */
+section {
+    padding: 10px;
+    margin: 10px;
+    width: 90%;
+}
+
+/* default font enlarge */
+body {
+    font-size: 1.2em;
+}
+
+/* h4 no top margin */
+h4,
+h3 {
+    margin: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+h3 {
+    /* inline */
+    display: inline;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.3em;
+}
+
+.hidden {
+    display: none;
+}
+
+/* display but don't print button */
+@media print {
+
+    button {
+        display: none;
+    }
+
+    /* print section */
+    section {
+        width: 90%;
+    }
+
+    /* print font size 1em */
+    body {
+        font-size: 1.3em;
+    }
+
+    /* print h4 no top margin */
+    h4 {
+        margin-top: 0;
+    }
+
+    /* print hidden display */
+    .hidden {
+        display: none;
+    }
+
+    /* 3 blocks per row */
+    .block {
+        width: 32%;
+    }
+}
+
+/* block display inline block */
+.block {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    width: 20%;
+}
+
+.ans {
+    color: red;
+}
+
+.plainbtn {
+    /* inline small grey button */
+    background-color: #aaaaaa;
+    border: 1px solid #f9f9f9;
+    color: black;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+}

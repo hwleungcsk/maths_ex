@@ -1,0 +1,328 @@
+<head>
+    <!-- CDN mvp.css -->
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
+    <!-- css.css -->
+    <link rel="stylesheet" href="css.css">
+
+    <!-- title: Fraction exercise -->
+    <title>Fraction exercise</title>    
+</head>
+
+<!-- minus button to call dateMinus() function -->
+<button onclick="dateMinus()" class="plainbtn">&lt;</button>
+<h3><span id="date"></span></h3>    
+<!-- plus button to call dateAdd() function -->
+<button onclick="dateAdd()" class="plainbtn">&gt;</button>
+
+<article>
+<h1>Reducing fraction</h1>
+<section>
+    <!-- title Reduce fraction -->
+
+    <div class="block" style="display: inline-block"><h4>Question 1</h4>
+        <span class="question-rf" id="q1"></span><span class="ans" id="q1a"></span>
+        <span class="hidden" id="q1n1"></span><span class="hidden" id="q1n2"></span>
+    </div>
+    <div class="block" style="display: inline-block"><h4>Question 2</h4>
+        <span class="question-rf" id="q2"></span><span class="ans" id="q2a"></span>
+        <span class="hidden" id="q2n1"></span><span class="hidden" id="q2n2"></span>
+    </div>
+    <div class="block" style="display: inline-block"><h4>Question 3</h4>
+        <span class="question-rf" id="q3"></span><span class="ans" id="q3a"></span>
+        <span class="hidden" id="q3n1"></span><span class="hidden" id="q3n2"></span>
+    </div>
+    <div class="block" style="display: inline-block"><h4>Question 4</h4>
+        <span class="question-rf" id="q4"></span><span class="ans" id="q4a"></span>
+        <span class="hidden" id="q4n1"></span><span class="hidden" id="q4n2"></span>
+    </div>
+    <div class="block" style="display: inline-block"><h4>Question 5</h4>
+        <span class="question-rf" id="q5"></span><span class="ans" id="q5a"></span>
+        <span class="hidden" id="q5n1"></span><span class="hidden" id="q5n2"></span>
+    </div>
+    <div class="block" style="display: inline-block"><h4>Question 6</h4>
+        <span class="question-rf" id="q6"></span><span class="ans" id="q6a"></span>
+        <span class="hidden" id="q6n1"></span><span class="hidden" id="q6n2"></span>
+    </div>
+</section>
+
+<h1>Imporper fraction</h1>
+Convert to mixed fractions
+<section>
+    <!-- title Imporper fraction -->
+
+    <div class="block" style="display: inline-block"><h4>Question 1</h4>
+        <span class="question-if" id="if1"></span><span class="ans" id="if1a"></span>
+        <span class="hidden" id="if1n1"></span><span class="hidden" id="if1n2"></span></span>
+    </div>
+    <div class="block" style="display: inline-block"><h4>Question 2</h4>
+        <span class="question-if" id="if2"></span><span class="ans" id="if2a"></span>
+        <span class="hidden" id="if2n1"></span><span class="hidden" id="if2n2"></span></span>
+    </div>
+    <div class="block" style="display: inline-block"><h4>Question 3</h4>
+        <span class="question-if" id="if3"></span><span class="ans" id="if3a"></span>
+        <span class="hidden" id="if3n1"></span><span class="hidden" id="if3n2"></span></span>
+    </div>
+    <div class="block" style="display: inline-block"><h4>Question 4</h4>
+        <span class="question-if" id="if4"></span><span class="ans" id="if4a"></span>
+        <span class="hidden" id="if4n1"></span><span class="hidden" id="if4n2"></span></span>
+    </div>
+    <div class="block" style="display: inline-block"><h4>Question 5</h4>
+        <span class="question-if" id="if5"></span><span class="ans" id="if5a"></span>
+        <span class="hidden" id="if5n1"></span><span class="hidden" id="if5n2"></span></span>
+    </div>
+    <div class="block" style="display: inline-block"><h4>Question 6</h4>
+        <span class="question-if" id="if6"></span><span class="ans" id="if6a"></span>
+        <span class="hidden" id="if6n1"></span><span class="hidden" id="if6n2"></span></span>
+    </div>
+</article>
+
+<!-- html button -->
+<button onclick="showhideans()" id="showhide">Show answers</button>
+<!-- button "New questions"  -->
+<button onclick="reset()">New questions</button>
+
+<div id="qr"></div>
+
+<script>
+    // if parameter contain &amp;, replace with &, refresh
+    if (window.location.href.indexOf('&amp;') > -1) {
+        window.location.href
+            = window.location.href.replace(/&amp;/g, '&');
+    }
+
+    function getURLParams() {
+        // get id of all spans with class question
+        var questions = document.getElementsByClassName('question-rf');
+        var rflength = questions.length;
+        // reduce fraction
+        // loop through all spans with class question
+        for (var i = 0; i < questions.length; i++) {
+            // get id of span
+            var id = questions[i].id;
+            // get value of id from URL
+            var val = getURL(id);
+            // if value is null, random 2-7 for seed, q1[0] = seed * random 2-7
+            if (val[0] == null) {
+                // getFraction
+                val = getFraction();
+            }
+            // use mathML to show q1a over q1b = in span id q1
+            document.getElementById(id).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + val[0] + '</mn><mn>' + val[1] + '</mn></mfrac></math>=';
+            // set innerHTML of q1n1 and q1n2 to q1[0] and q1[1]
+            document.getElementById(id + 'n1').innerHTML = val[0];
+            document.getElementById(id + 'n2').innerHTML = val[1];
+        }
+
+        // improper fraction
+        // get id of all spans with class question
+        var questions = document.getElementsByClassName('question-if');
+        // loop through all spans with class question
+        for (var i = 0; i < questions.length ; i++) {
+            // get id of span  'if1'
+            var id = questions[i].id;
+            // get value of id from URL
+            var val = getURL(id);
+            // if value is null, random 2-7 for seed, [1] = seed * random 2-4, [0] = 1 to 3, [2] = (([1] / seed) + random 2-4) * seed
+            if (val[0] == null) {
+                val = getFraction();
+            }
+            // use mathML to show [0] and [1] over [2] = in span id q1
+            document.getElementById(id).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + val[1] + '</mn><mn>' + val[0] + '</mn></mfrac></math>=';
+
+            // set innerHTML of q1n1 and q1n2 to q1[0] and q1[1]
+            document.getElementById(id + 'n1').innerHTML = val[0];
+            document.getElementById(id + 'n2').innerHTML = val[1];
+
+        }
+    }
+
+    function getFraction()
+    {
+        // random 2-7 for seed, [0] = seed * random 2-4, [1] = (([1] / seed) + random 2-4) * seed
+        var seed = Math.floor(Math.random() * 3) + 2;
+        var n1 = seed * (Math.floor(Math.random() * 3) + 2);
+        var n2 = ((n1 / seed) + (Math.floor(Math.random() * 5) + 2)) * seed;
+        return [n1, n2];
+    }
+
+    function getMR()
+    {
+        // random 2-7 for seed, [1] = seed * random 2-4, [0] = 1 to 3, [2] = (([1] / seed) + random 2-4) * seed
+        var seed = Math.floor(Math.random() * 3) + 2;
+        var n1 = seed * (Math.floor(Math.random() * 3) + 2);
+        var n0 = Math.floor(Math.random() * 5) + 1;
+        var n2 = ((n1 / seed) + (Math.floor(Math.random() * 3) + 2)) * seed;
+        return [n0, n1, n2];
+    }
+
+    function getURL(question)
+    {
+        var value = new URLSearchParams(window.location.search).get(question);
+        if (value != null) {
+            value = value.split(',');
+        }
+
+        if (value == null) {
+            value = [];
+        }
+
+        return value;
+    }
+
+    function hcf(a, b) {
+        // find common factors of a and b
+        var factors = [];
+        for (var i = Math.min(a, b); i > 0; i--) {
+            if (a % i == 0 && b % i == 0) {
+                return i;
+            }
+        }
+    }
+
+    function calall() {
+        // loop all spans with class question
+        var questions = document.getElementsByClassName('question-rf');
+        for (var i = 0; i < questions.length; i++) {
+            // get id of span
+            var id = questions[i].id;
+            // call calans with id
+            calansrf(id);
+            calansif(id.replace('q', 'if'));
+        }
+
+    }
+
+    function calansrf(name) {
+        var q = [];
+        q[0] = parseInt(document.getElementById(name + 'n1').innerHTML);
+        q[1] = parseInt(document.getElementById(name + 'n2').innerHTML);
+        
+        // find hcf of q[0] and q[1]
+        var hcfv = hcf(q[0], q[1]);
+        // divide q[0] and q[1] by hcfv
+        q[0] = q[0] / hcfv;
+        q[1] = q[1] / hcfv;
+        // use mathML to show q[0]/q[1] in span id q1a
+        // document.getElementById('q1a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac></math>';
+        document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac></math>';
+    }
+
+    function reduce(n1, n2) {
+        var hcfv = hcf(n1, n2);
+        return [n1 / hcfv, n2 / hcfv];
+    }
+
+    function calansif(name) {
+        var q = [];
+        q[0] = parseInt(document.getElementById(name + 'n1').innerHTML);
+        q[1] = parseInt(document.getElementById(name + 'n2').innerHTML);
+
+        var num = 0;
+        while (q[1] >= q[0]) {
+            q[1] = q[1] - q[0];
+            num++;
+        }
+
+        // reduce
+        if (q[1] != 0)
+            q = reduce(q[1], q[0]);
+
+        if (num == 0) {
+            document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>' + q[1] + '</mn></math>';
+        }
+        else if (q[1] == 0) {
+            document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>' + num + '</mn></math>';
+        }
+        else {
+            document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>' + num + '</mn><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac></math>';
+        }
+
+    }
+
+
+    function genQR()
+    {
+        var qr = document.getElementById('qr');
+        var questions = document.getElementsByClassName('question-rf');
+        for (var i = 0; i < questions.length; i++) {
+            var id = questions[i].id;
+            var val = getURL(id);
+            if (val[0] == null) {
+                // get value from span id
+                val[0] = document.getElementById(id + 'n1').innerHTML;
+                val[1] = document.getElementById(id + 'n2').innerHTML;
+            }
+            qr.innerHTML += id + '=' + val[0] + ',' + val[1] + '&';
+        }
+        questions = document.getElementsByClassName('question-if');
+        for (var i = 0; i < questions.length; i++) {
+            var id = questions[i].id;
+            var val = getURL(id);
+            if (val[0] == null) {
+                // get value from span id
+                val[0] = document.getElementById(id + 'n1').innerHTML;
+                val[1] = document.getElementById(id + 'n2').innerHTML;
+            }
+            qr.innerHTML += id + '=' + val[0] + ',' + val[1] + ',' + val[2] + '&';
+        }
+
+
+        var url = window.location.href.split('?')[0] + '?';
+        fullurl = url + qr.innerHTML;
+
+
+        // QR Code
+        qr.innerHTML = '<br><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(fullurl) + '">';
+
+        // text link
+        qr.innerHTML += '<br><a href="' + fullurl + '">QR Code</a>';
+    }
+
+    function showhideans()
+    {
+        var button = document.getElementsByTagName('button')[0];
+        if (document.getElementById("showhide").innerHTML == 'Show answers') {
+            document.getElementById("showhide").innerHTML = 'Hide answers';            
+            // clear all innerHTML values
+            var ans = document.getElementsByClassName('ans');
+            calall();
+        } else {
+            document.getElementById("showhide").innerHTML = 'Show answers';
+            var ans = document.getElementsByClassName('ans');
+            for (var i = 0; i < ans.length; i++) {
+                ans[i].innerHTML = '';
+            }
+        }
+    }
+
+    function reset() {
+        // clear parameters and reload
+        window.location.href = window.location.href.split('?')[0];
+    }
+
+    function dateAdd()
+    {
+        // get date from span id date
+        var date = new Date(document.getElementById('date').innerHTML);
+        // add 1 day
+        date.setDate(date.getDate() + 1);
+        // set innerHTML of span id date to new date
+        document.getElementById('date').innerHTML = date.toISOString().split('T')[0];
+    }
+
+    function dateMinus()
+    {
+        // get date from span id date
+        var date = new Date(document.getElementById('date').innerHTML);
+        // minus 1 day
+        date.setDate(date.getDate() - 1);
+        // set innerHTML of span id date to new date
+        document.getElementById('date').innerHTML = date.toISOString().split('T')[0];
+    }
+
+    // update date in yyyy-mm-dd format
+    document.getElementById('date').innerHTML = new Date().toISOString().split('T')[0];
+    getURLParams();
+    genQR();
+</script>
+
