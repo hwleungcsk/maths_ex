@@ -5,4 +5,8 @@ HTML + CSS + JavaScript + MathML
 Used MVP.css and lots of GitHub Copilot
 
 A quick project with ugly UI, ugly structure, ugly algorithm and ugly variables.
- 
+
+Usage:
+Print out
+Scan QR code to view the questions on web again
+Show/Hide answers
