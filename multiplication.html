@@ -122,10 +122,17 @@
             var id = questions[i].id;
             // get value of id from URL
             var val = getURL(id);
-            // if value is null, random 2-7 for seed, [1] = seed * random 2-4, [0] = 1 to 3, [2] = (([1] / seed) + random 2-4) * seed
+
             if (val[0] == null) {
                 val = genNum2();
             }
+
+            // convert to int
+            val[0] = parseInt(val[0]);
+            val[1] = parseInt(val[1]);
+            val[2] = parseInt(val[2]);
+            val[3] = parseInt(val[3]);
+
             // use mathML to show formula, according to n0
             switch (val[0])
             {
@@ -153,6 +160,7 @@
                 case 8:
                     document.getElementById(id).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>' + val[1] + '</mn><mo>-</mo><mn>' + val[2] + '</mn><mo>&times;</mo><mn>' + val[3] + '</mn><mo>=</mo></math>';
                     break;
+                // other case
             }
             
             // set innerHTML of q1n1 and q1n2 to q1[0] and q1[1]
@@ -257,7 +265,6 @@
         if (value == null) {
             value = [];
         }
-
         return value;
     }
 
@@ -333,7 +340,7 @@
     function genQR()
     {
         var qr = document.getElementById('qr');
-        var questions = document.getElementsByClassName('question-rf');
+        var questions = document.getElementsByClassName('question-multi1');
         for (var i = 0; i < questions.length; i++) {
             var id = questions[i].id;
             var val = getURL(id);
@@ -344,7 +351,8 @@
             }
             qr.innerHTML += id + '=' + val[0] + ',' + val[1] + '&';
         }
-        questions = document.getElementsByClassName('question-if');
+
+        questions = document.getElementsByClassName('question-multi2');
         for (var i = 0; i < questions.length; i++) {
             var id = questions[i].id;
             var val = getURL(id);
@@ -352,14 +360,14 @@
                 // get value from span id
                 val[0] = document.getElementById(id + 'n1').innerHTML;
                 val[1] = document.getElementById(id + 'n2').innerHTML;
+                val[2] = document.getElementById(id + 'n3').innerHTML;
+                val[3] = document.getElementById(id + 'n4').innerHTML;
             }
-            qr.innerHTML += id + '=' + val[0] + ',' + val[1] + ',' + val[2] + '&';
+            qr.innerHTML += id + '=' + val[0] + ',' + val[1] + ',' + val[2] + ',' + val[3] + '&';
         }
-
 
         var url = window.location.href.split('?')[0] + '?';
         fullurl = url + qr.innerHTML;
-
 
         // QR Code
         qr.innerHTML = '<br><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(fullurl) + '">';
