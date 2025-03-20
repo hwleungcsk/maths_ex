@@ -40,13 +40,13 @@ h1 {
 /* display but don't print button */
 @media print {
 
-    button {
-        display: none;
+    @page {
+        size: A4;
+        margin: 0;
     }
 
-    /* print section */
-    section {
-        width: 90%;
+    button {
+        display: none;
     }
 
     /* print font size 1em */
@@ -64,9 +64,8 @@ h1 {
         display: none;
     }
 
-    /* 3 blocks per row */
-    .block {
-        width: 32%;
+    .col2 {
+        width: 3.5in;
     }
 }
 
@@ -96,4 +95,8 @@ h1 {
     margin: 4px 2px;
     cursor: pointer;
 
+}
+
+.pagebreak {
+    page-break-after: always;
 }
