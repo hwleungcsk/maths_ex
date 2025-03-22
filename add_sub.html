@@ -343,7 +343,7 @@
     function genQR()
     {
         var qr = document.getElementById('qr');
-        var questions = document.getElementsByClassName('question-multi1');
+        var questions = document.getElementsByClassName('question-add');
         for (var i = 0; i < questions.length; i++) {
             var id = questions[i].id;
             var val = getURL(id);
@@ -355,7 +355,7 @@
             qr.innerHTML += id + '=' + val[0] + ',' + val[1] + '&';
         }
 
-        questions = document.getElementsByClassName('question-multi2');
+        questions = document.getElementsByClassName('question-addsub');
         for (var i = 0; i < questions.length; i++) {
             var id = questions[i].id;
             var val = getURL(id);
