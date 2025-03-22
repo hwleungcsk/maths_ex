@@ -174,11 +174,13 @@
     function genNum()
     {
         // random 2-20 for [0] and [1]
-        var n1 = 20;
-        var n2 = 20;
-        while (n1 * n2 > 150) {
-            n1 = Math.floor(Math.random() * 19) + 2;
-            n2 = Math.floor(Math.random() * 19) + 2;
+        var n1 = 2000;
+        var n2 = 2000;
+        var max = 10000, rannum = 130, minnum = 20;
+
+        while (n1 * n2 > max) {
+            n1 = Math.floor(Math.random() * rannum) + minnum;
+            n2 = Math.floor(Math.random() * rannum) + minnum;
         }
         return [n1, n2];
     }
@@ -192,63 +194,64 @@
         var a = 0;
         var b = 0;
         var c = 0;
+        var max = 500, rannum = 100, minnum = 5;
 
         // make sure calcualation result is larger than 0 and smaller than 100
         switch (n0) {
             case 1:
-                while ((a * b + c <= 0) || (a * b + c > 100)) {
-                    a = Math.floor(Math.random() * 13) + 3;
-                    b = Math.floor(Math.random() * 13) + 3;
-                    c = Math.floor(Math.random() * 13) + 3;
+                while ((a * b + c <= 0) || (a * b + c > max)) {
+                    a = Math.floor(Math.random() * rannum) + minnum;
+                    b = Math.floor(Math.random() * rannum) + minnum;
+                    c = Math.floor(Math.random() * rannum) + minnum;
                 }
                 break;
             case 2:
-                while ((a * b - c <= 0) || (a * b - c > 100)) {
-                    a = Math.floor(Math.random() * 13) + 3;
-                    b = Math.floor(Math.random() * 13) + 3;
-                    c = Math.floor(Math.random() * 13) + 3;
+                while ((a * b - c <= 0) || (a * b - c > max)) {
+                    a = Math.floor(Math.random() * rannum) + minnum;
+                    b = Math.floor(Math.random() * rannum) + minnum;
+                    c = Math.floor(Math.random() * rannum) + minnum;
                 }
                 break;
             case 3:
-                while ((a * (b + c) <= 0) || (a * (b + c) > 100)) {
-                    a = Math.floor(Math.random() * 13) + 3;
-                    b = Math.floor(Math.random() * 13) + 3;
-                    c = Math.floor(Math.random() * 13) + 3;
+                while ((a * (b + c) <= 0) || (a * (b + c) > max)) {
+                    a = Math.floor(Math.random() * rannum) + minnum;
+                    b = Math.floor(Math.random() * rannum) + minnum;
+                    c = Math.floor(Math.random() * rannum) + minnum;
                 }
                 break;
             case 4:
-                while ((a * (b - c) <= 0) || (a * (b - c) > 100)) {
-                    a = Math.floor(Math.random() * 13) + 3;
-                    b = Math.floor(Math.random() * 13) + 3;
-                    c = Math.floor(Math.random() * 13) + 3;
+                while ((a * (b - c) <= 0) || (a * (b - c) > max)) {
+                    a = Math.floor(Math.random() * rannum) + minnum;
+                    b = Math.floor(Math.random() * rannum) + minnum;
+                    c = Math.floor(Math.random() * rannum) + minnum;
                 }
                 break;
             case 5:
-                while (((a + b) * c <= 0) || ((a + b) * c > 100)) {
-                    a = Math.floor(Math.random() * 13) + 3;
-                    b = Math.floor(Math.random() * 13) + 3;
-                    c = Math.floor(Math.random() * 13) + 3;
+                while (((a + b) * c <= 0) || ((a + b) * c > max)) {
+                    a = Math.floor(Math.random() * rannum) + minnum;
+                    b = Math.floor(Math.random() * rannum) + minnum;
+                    c = Math.floor(Math.random() * rannum) + minnum;
                 }
                 break;
             case 6:
-                while (((a - b) * c <= 0) || ((a - b) * c > 100)) {
-                    a = Math.floor(Math.random() * 13) + 3;
-                    b = Math.floor(Math.random() * 13) + 3;
-                    c = Math.floor(Math.random() * 13) + 3;
+                while (((a - b) * c <= 0) || ((a - b) * c > max)) {
+                    a = Math.floor(Math.random() * rannum) + minnum;
+                    b = Math.floor(Math.random() * rannum) + minnum;
+                    c = Math.floor(Math.random() * rannum) + minnum;
                 }
                 break;
             case 7:
-                while ((a + b * c <= 0) || (a + b * c > 100)) {
-                    a = Math.floor(Math.random() * 13) + 3;
-                    b = Math.floor(Math.random() * 13) + 3;
-                    c = Math.floor(Math.random() * 13) + 3;
+                while ((a + b * c <= 0) || (a + b * c > max)) {
+                    a = Math.floor(Math.random() * rannum) + minnum;
+                    b = Math.floor(Math.random() * rannum) + minnum;
+                    c = Math.floor(Math.random() * rannum) + minnum;
                 }
                 break;
             case 8:
-                while ((a - b * c <= 0) || (a - b * c > 100)) {
-                    a = Math.floor(Math.random() * 13) + 3;
-                    b = Math.floor(Math.random() * 13) + 3;
-                    c = Math.floor(Math.random() * 13) + 3;
+                while ((a - b * c <= 0) || (a - b * c > max)) {
+                    a = Math.floor(Math.random() * rannum) + minnum;
+                    b = Math.floor(Math.random() * rannum) + minnum;
+                    c = Math.floor(Math.random() * rannum) + minnum;
                 }
                 break;
         }

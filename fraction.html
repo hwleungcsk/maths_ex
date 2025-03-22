@@ -275,7 +275,7 @@ Write the numbers in the spaces in ascending order
             // add line break
             document.getElementById(id).innerHTML += '<br><br>';
             // set span ans to ______ < ______ < ______
-            document.getElementById(id + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>______</mn>&nbsp;&lt;&nbsp;<mn>______</mn>&nbsp;&lt;&nbsp;<mn>______</mn></math>';
+            document.getElementById(id + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>______</mn><mn>&nbsp;&lt;&nbsp;</mn><mn>______</mn><mn>&nbsp;&lt;&nbsp;</mn><mn>______</mn></math>';
             // change ans to black
             document.getElementById(id + 'a').style.color = 'black';
         }
@@ -418,31 +418,31 @@ Write the numbers in the spaces in ascending order
         if (a < b && a < c) {
             if (b < c) {
                 // show fraction and answer in a box
-                document.getElementById(name).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac> <menclose notation="box" class="ans">&nbsp;1&nbsp;</menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac> <menclose notation="box" class="ans">&nbsp;2&nbsp;</menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac><menclose notation="box" class="ans">&nbsp;3&nbsp;</menclose></math>';
+                document.getElementById(name).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac> <menclose notation="box" class="ans"><mn>&nbsp;1&nbsp;</mn></menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac> <menclose notation="box" class="ans"><mn>&nbsp;2&nbsp;</mn></menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac><menclose notation="box" class="ans"><mn>&nbsp;3&nbsp;</mn></menclose></math>';
             }
             else {
                 // show fraction and answer in a box
-                document.getElementById(name).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac> <menclose notation="box" class="ans">&nbsp;1&nbsp;</menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac> <menclose notation="box" class="ans">&nbsp;3&nbsp;</menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac><menclose notation="box" class="ans">&nbsp;2&nbsp;</menclose></math>';
+                document.getElementById(name).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac> <menclose notation="box" class="ans"><mn>&nbsp;1&nbsp;</mn></menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac> <menclose notation="box" class="ans"><mn>&nbsp;3&nbsp;</mn></menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac><menclose notation="box" class="ans"><mn>&nbsp;2&nbsp;</mn></menclose></math>';
             }
         }
         else if (b < a && b < c) {
             if (a < c) {
                 // show fraction and answer in a box
-                document.getElementById(name).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac> <menclose notation="box" class="ans">&nbsp;2&nbsp;</menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac> <menclose notation="box" class="ans">&nbsp;1&nbsp;</menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac><menclose notation="box" class="ans">&nbsp;3&nbsp;</menclose></math>';
+                document.getElementById(name).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac> <menclose notation="box" class="ans"><mn>&nbsp;2&nbsp;</mn></menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac> <menclose notation="box" class="ans"><mn>&nbsp;1&nbsp;</mn></menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac><menclose notation="box" class="ans"><mn>&nbsp;3&nbsp;</mn></menclose></math>';
             }
             else {
                 // show fraction and answer in a box
-                document.getElementById(name).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac> <menclose notation="box" class="ans">&nbsp;3&nbsp;</menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac> <menclose notation="box" class="ans">&nbsp;1&nbsp;</menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac><menclose notation="box" class="ans">&nbsp;2&nbsp;</menclose></math>';
+                document.getElementById(name).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac> <menclose notation="box" class="ans"><mn>&nbsp;3&nbsp;</mn></menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac> <menclose notation="box" class="ans"><mn>&nbsp;1&nbsp;</mn></menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac><menclose notation="box" class="ans"><mn>&nbsp;2&nbsp;</mn></menclose></math>';
             }
         }
         else {
             if (a < b) {
                 // show fraction and answer in a box
-                document.getElementById(name).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac> <menclose notation="box" class="ans">&nbsp;2&nbsp;</menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac> <menclose notation="box" class="ans">&nbsp;3&nbsp;</menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac><menclose notation="box" class="ans">&nbsp;1&nbsp;</menclose></math>';
+                document.getElementById(name).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac> <menclose notation="box" class="ans"><mn>&nbsp;2&nbsp;</mn></menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac> <menclose notation="box" class="ans"><mn>&nbsp;3&nbsp;</mn></menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac><menclose notation="box" class="ans"><mn>&nbsp;1&nbsp;</mn></menclose></math>';
             }
             else {
                 // show fraction and answer in a box
-                document.getElementById(name).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac> <menclose notation="box" class="ans">&nbsp;3&nbsp;</menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac> <menclose notation="box" class="ans">&nbsp;2&nbsp;</menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac><menclose notation="box" class="ans">&nbsp;1&nbsp;</menclose></math>';
+                document.getElementById(name).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac> <menclose notation="box" class="ans"><mn>&nbsp;3&nbsp;</mn></menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac> <menclose notation="box" class="ans"><mn>&nbsp;2&nbsp;</mn></menclose>&nbsp; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac><menclose notation="box" class="ans"><mn>&nbsp;1&nbsp;</mn></menclose></math>';
             }
         }            
 
@@ -465,26 +465,26 @@ Write the numbers in the spaces in ascending order
         // arrange ans in ascending order a < b < c
         if (a < b && a < c) {
             if (b < c) {
-                document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac>&nbsp;&lt;&nbsp;<mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac>&nbsp;&lt;&nbsp;<mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac></math>';
+                document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac><mn>&nbsp;&lt;&nbsp;</mn><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac><mn>&nbsp;&lt;&nbsp;</mn><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac></math>';
             }
             else {
-                document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac>&nbsp;&lt;&nbsp;<mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac>&nbsp;&lt;&nbsp;<mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac></math>';
+                document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac><mn>&nbsp;&lt;&nbsp;</mn><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac><mn>&nbsp;&lt;&nbsp;</mn><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac></math>';
             }
         }
         else if (b < a && b < c) {
             if (a < c) {
-                document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac>&nbsp;&lt;&nbsp;<mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac>&nbsp;&lt;&nbsp;<mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac></math>';
+                document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac><mn>&nbsp;&lt;&nbsp;</mn><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac><mn>&nbsp;&lt;&nbsp;</mn><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac></math>';
             }
             else {
-                document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac>&nbsp;&lt;&nbsp;<mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac>&nbsp;&lt;&nbsp;<mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac></math>';
+                document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac><mn>&nbsp;&lt;&nbsp;</mn><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac><mn>&nbsp;&lt;&nbsp;</mn><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac></math>';
             }
         }
         else {
             if (a < b) {
-                document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac>&nbsp;&lt;&nbsp;<mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac>&nbsp;&lt;&nbsp;<mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac></math>';
+                document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac><mn>&nbsp;&lt;&nbsp;</mn><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac><mn>&nbsp;&lt;&nbsp;</mn><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac></math>';
             }
             else {
-                document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac>&nbsp;&lt;&nbsp;<mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac>&nbsp;&lt;&nbsp;<mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac></math>';
+                document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>' + q[4] + '</mn><mn>' + q[5] + '</mn></mfrac><mn>&nbsp;&lt;&nbsp;</mn><mfrac><mn>' + q[2] + '</mn><mn>' + q[3] + '</mn></mfrac><mn>&nbsp;&lt;&nbsp;</mn><mfrac><mn>' + q[0] + '</mn><mn>' + q[1] + '</mn></mfrac></math>';
             }
         }
 
@@ -551,7 +551,6 @@ Write the numbers in the spaces in ascending order
 
         var url = window.location.href.split('?')[0] + '?';
         fullurl = url + qr.innerHTML;
-
 
         // QR Code
         qr.innerHTML = '<br><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(fullurl) + '">';
