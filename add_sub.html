@@ -1,0 +1,430 @@
+<head>
+    <!-- CDN mvp.css -->
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
+    <!-- css.css -->
+    <link rel="stylesheet" href="css.css">
+    <title>Addition / Subtraction exercise</title>
+</head>
+
+<!-- minus button to call dateMinus() function -->
+<button onclick="dateMinus()" class="plainbtn">&lt;</button>
+<h3><span id="date"></span></h3>    
+<!-- plus button to call dateAdd() function -->
+<button onclick="dateAdd()" class="plainbtn">&gt;</button>
+
+<article>
+<h1>Addition</h1>
+<section>
+    <div class="block" style="display: inline-block"><h4>Question 1</h4>
+        <span class="question-add" id="q1"></span><span class="ans" id="q1a"></span>
+        <span class="hidden" id="q1n1"></span><span class="hidden" id="q1n2"></span>
+    </div>
+    <div class="block" style="display: inline-block"><h4>Question 2</h4>
+        <span class="question-add" id="q2"></span><span class="ans" id="q2a"></span>
+        <span class="hidden" id="q2n1"></span><span class="hidden" id="q2n2"></span>
+    </div>
+    <div class="block" style="display: inline-block"><h4>Question 3</h4>
+        <span class="question-add" id="q3"></span><span class="ans" id="q3a"></span>
+        <span class="hidden" id="q3n1"></span><span class="hidden" id="q3n2"></span>
+    </div>
+    <div class="block" style="display: inline-block"><h4>Question 4</h4>
+        <span class="question-add" id="q4"></span><span class="ans" id="q4a"></span>
+        <span class="hidden" id="q4n1"></span><span class="hidden" id="q4n2"></span>
+    </div>
+    <div class="block" style="display: inline-block"><h4>Question 5</h4>
+        <span class="question-add" id="q5"></span><span class="ans" id="q5a"></span>
+        <span class="hidden" id="q5n1"></span><span class="hidden" id="q5n2"></span>
+    </div>
+    <div class="block" style="display: inline-block"><h4>Question 6</h4>
+        <span class="question-add" id="q6"></span><span class="ans" id="q6a"></span>
+        <span class="hidden" id="q6n1"></span><span class="hidden" id="q6n2"></span>
+    </div>
+</section>
+</article>
+
+
+<article>
+    <h1>Addition + Subtraction</h1>
+    <section>
+        <div class="block" style="display: inline-block"><h4>Question 1</h4>
+            <span class="question-addsub" id="q21"></span><span class="ans" id="q21a"></span>
+            <span class="hidden" id="q21n1"></span><span class="hidden" id="q21n2"></span>
+            <span class="hidden" id="q21n3"></span><span class="hidden" id="q21n4"></span>
+        </div>
+        <div class="block" style="display: inline-block"><h4>Question 2</h4>
+            <span class="question-addsub" id="q22"></span><span class="ans" id="q22a"></span>
+            <span class="hidden" id="q22n1"></span><span class="hidden" id="q22n2"></span>
+            <span class="hidden" id="q22n3"></span><span class="hidden" id="q22n4"></span>
+        </div>
+        <div class="block" style="display: inline-block"><h4>Question 3</h4>
+            <span class="question-addsub" id="q23"></span><span class="ans" id="q23a"></span>
+            <span class="hidden" id="q23n1"></span><span class="hidden" id="q23n2"></span>
+            <span class="hidden" id="q23n3"></span><span class="hidden" id="q23n4"></span>
+        </div>
+        <div class="block" style="display: inline-block"><h4>Question 4</h4>
+            <span class="question-addsub" id="q24"></span><span class="ans" id="q24a"></span>
+            <span class="hidden" id="q24n1"></span><span class="hidden" id="q24n2"></span>
+            <span class="hidden" id="q24n3"></span><span class="hidden" id="q24n4"></span>
+        </div>
+        <div class="block" style="display: inline-block"><h4>Question 5</h4>
+            <span class="question-addsub" id="q25"></span><span class="ans" id="q25a"></span>
+            <span class="hidden" id="q25n1"></span><span class="hidden" id="q25n2"></span>
+            <span class="hidden" id="q25n3"></span><span class="hidden" id="q25n4"></span>
+        </div>
+        <div class="block" style="display: inline-block"><h4>Question 6</h4>
+            <span class="question-addsub" id="q26"></span><span class="ans" id="q26a"></span>
+            <span class="hidden" id="q26n1"></span><span class="hidden" id="q26n2"></span>
+            <span class="hidden" id="q26n3"></span><span class="hidden" id="q26n4"></span>
+        </div>
+    </section>
+    </article>
+    
+<!-- html button -->
+<button onclick="showhideans()" id="showhide">Show answers</button>
+<!-- button "New questions"  -->
+<button onclick="reset()">New questions</button>
+
+<div id="qr"></div>
+
+<script>
+    // if parameter contain &amp;, replace with &, refresh
+    if (window.location.href.indexOf('&amp;') > -1) {
+        window.location.href
+            = window.location.href.replace(/&amp;/g, '&');
+    }
+
+    function getURLParams() {
+        // get id of all spans with class question
+        var questions = document.getElementsByClassName('question-add');
+        var mullength = questions.length;
+        // loop through all spans with class question
+        for (var i = 0; i < questions.length; i++) {
+            // get id of span
+            var id = questions[i].id;
+            // get value of id from URL
+            var val = getURL(id);
+            if (val[0] == null) {
+                // generate numbers
+                val = genNum();
+            }
+            // use mathML to show q1a x q1b = in span id q1
+            document.getElementById(id).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>' + val[0] + '</mn><mo>+</mo><mn>' + val[1] + '</mn><mo>=</mo></math>';
+            // set innerHTML of q1n1 and q1n2 to q1[0] and q1[1]
+            document.getElementById(id + 'n1').innerHTML = val[0];
+            document.getElementById(id + 'n2').innerHTML = val[1];
+        }
+
+        // get id of all spans with class question
+        var questions = document.getElementsByClassName('question-addsub');
+        // loop through all spans with class question
+        for (var i = 0; i < questions.length ; i++) {
+            // get id of span  'question-multi2'
+            var id = questions[i].id;
+            // get value of id from URL
+            var val = getURL(id);
+
+            if (val[0] == null) {
+                val = genNum2();
+            }
+
+            // convert to int
+            val[0] = parseInt(val[0]);
+            val[1] = parseInt(val[1]);
+            val[2] = parseInt(val[2]);
+            val[3] = parseInt(val[3]);
+
+            // use mathML to show formula, according to n0
+            switch (val[0])
+            {
+                case 1:
+                    document.getElementById(id).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>' + val[1] + '</mn><mo>-</mo><mn>' + val[2] + '</mn><mo>+</mo><mn>' + val[3] + '</mn><mo>=</mo></math>';
+                    break;
+                case 2:
+                    document.getElementById(id).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>' + val[1] + '</mn><mo>+</mo><mn>' + val[2] + '</mn><mo>-</mo><mn>' + val[3] + '</mn><mo>=</mo></math>';
+                    break;
+                case 3:
+                    document.getElementById(id).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>' + val[1] + '</mn><mo>-</mo><mo>(</mo><mn>' + val[2] + '</mn><mo>+</mo><mn>' + val[3] + '</mn><mo>)</mo><mo>=</mo></math>';
+                    break;
+                case 4:
+                    document.getElementById(id).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>' + val[1] + '</mn><mo>-</mo><mo>(</mo><mn>' + val[2] + '</mn><mo>-</mo><mn>' + val[3] + '</mn><mo>)</mo><mo>=</mo></math>';
+                    break;
+                case 5:
+                    document.getElementById(id).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mo>(</mo><mn>' + val[1] + '</mn><mo>+</mo><mn>' + val[2] + '</mn><mo>)</mo><mo>-</mo><mn>' + val[3] + '</mn><mo>=</mo></math>';
+                    break;
+                case 6:
+                    document.getElementById(id).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mo>(</mo><mn>' + val[1] + '</mn><mo>-</mo><mn>' + val[2] + '</mn><mo>)</mo><mo>-</mo><mn>' + val[3] + '</mn><mo>=</mo></math>';
+                    break;
+                case 7:
+                    document.getElementById(id).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>' + val[1] + '</mn><mo>+</mo><mn>' + val[2] + '</mn><mo>-</mo><mn>' + val[3] + '</mn><mo>=</mo></math>';
+                    break;
+                case 8:
+                    document.getElementById(id).innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>' + val[1] + '</mn><mo>-</mo><mn>' + val[2] + '</mn><mo>-</mo><mn>' + val[3] + '</mn><mo>=</mo></math>';
+                    break;
+                // other case
+            }
+            
+            // set innerHTML of q1n1 and q1n2 to q1[0] and q1[1]
+            document.getElementById(id + 'n1').innerHTML = val[0];
+            document.getElementById(id + 'n2').innerHTML = val[1];
+            document.getElementById(id + 'n3').innerHTML = val[2];
+            document.getElementById(id + 'n4').innerHTML = val[3];
+        }
+    }
+
+    function genNum()
+    {
+        // random 2-20 for [0] and [1]
+        var n1 = 2000;
+        var n2 = 2000;
+        var max = 1000, rannum = 330, minnum = 120;
+
+        while (n1 + n2 > max) {
+            n1 = Math.floor(Math.random() * rannum) + minnum;
+            n2 = Math.floor(Math.random() * rannum) + minnum;
+        }
+        return [n1, n2];
+    }
+
+    function genNum2()
+    {
+        // n0 = type: 1 for a * b + c, 2 for a * b - c, 3 for a * (b + c), 4 for a * (b - c), 5 for (a + b) * c, 6 for (a - b) * c, 7 for a + b * c, 8 for a - b * c
+        var n0 = Math.floor(Math.random() * 8) + 1;
+
+        // a, b, c random 3 - 15
+        var a = 0;
+        var b = 0;
+        var c = 0;
+        var max = 1000, rannum = 500, minnum = 50;
+
+        // make sure calcualation result is larger than 0 and smaller than 100
+        switch (n0) {
+            case 1:
+                while ((a - b + c <= 0) || (a - b + c > max)) {
+                    a = Math.floor(Math.random() * rannum) + minnum;
+                    b = Math.floor(Math.random() * rannum) + minnum;
+                    c = Math.floor(Math.random() * rannum) + minnum;
+                }
+                break;
+            case 2:
+                while ((a - b - c <= 0) || (a - b - c > max)) {
+                    a = Math.floor(Math.random() * rannum) + minnum;
+                    b = Math.floor(Math.random() * rannum) + minnum;
+                    c = Math.floor(Math.random() * rannum) + minnum;
+                }
+                break;
+            case 3:
+                while ((a - (b + c) <= 0) || (a - (b + c) > max)) {
+                    a = Math.floor(Math.random() * rannum) + minnum;
+                    b = Math.floor(Math.random() * rannum) + minnum;
+                    c = Math.floor(Math.random() * rannum) + minnum;
+                }
+                break;
+            case 4:
+                while ((a - (b - c) <= 0) || (a - (b - c) > max)) {
+                    a = Math.floor(Math.random() * rannum) + minnum;
+                    b = Math.floor(Math.random() * rannum) + minnum;
+                    c = Math.floor(Math.random() * rannum) + minnum;
+                }
+                break;
+            case 5:
+                while (((a + b) - c <= 0) || ((a + b) - c > max)) {
+                    a = Math.floor(Math.random() * rannum) + minnum;
+                    b = Math.floor(Math.random() * rannum) + minnum;
+                    c = Math.floor(Math.random() * rannum) + minnum;
+                }
+                break;
+            case 6:
+                while (((a - b) - c <= 0) || ((a - b) - c > max)) {
+                    a = Math.floor(Math.random() * rannum) + minnum;
+                    b = Math.floor(Math.random() * rannum) + minnum;
+                    c = Math.floor(Math.random() * rannum) + minnum;
+                }
+                break;
+            case 7:
+                while ((a + b - c <= 0) || (a + b - c > max)) {
+                    a = Math.floor(Math.random() * rannum) + minnum;
+                    b = Math.floor(Math.random() * rannum) + minnum;
+                    c = Math.floor(Math.random() * rannum) + minnum;
+                }
+                break;
+            case 8:
+                while ((a - b - c <= 0) || (a - b - c > max)) {
+                    a = Math.floor(Math.random() * rannum) + minnum;
+                    b = Math.floor(Math.random() * rannum) + minnum;
+                    c = Math.floor(Math.random() * rannum) + minnum;
+                }
+                break;
+        }
+        return [n0, a, b, c];
+    }
+
+    function getURL(question)
+    {
+        var value = new URLSearchParams(window.location.search).get(question);
+        if (value != null) {
+            value = value.split(',');
+        }
+
+        if (value == null) {
+            value = [];
+        }
+        return value;
+    }
+
+    function hcf(a, b) {
+        // find common factors of a and b
+        var factors = [];
+        for (var i = Math.min(a, b); i > 0; i--) {
+            if (a % i == 0 && b % i == 0) {
+                return i;
+            }
+        }
+    }
+
+    function calall() {
+        // loop all spans with class question
+        var questions = document.getElementsByClassName('question-add');
+        for (var i = 0; i < questions.length; i++) {
+            // get id of span
+            var id = questions[i].id;
+            // call calans with id
+            calansadd(id);
+            calansaddsub(id.replace('add', 'addsub').replace('q', 'q2'));
+        }
+
+    }
+
+    function calansadd(name) {
+        var q = [];
+        q[0] = parseInt(document.getElementById(name + 'n1').innerHTML);
+        q[1] = parseInt(document.getElementById(name + 'n2').innerHTML);
+        
+        document.getElementById(name + 'a').innerHTML =  '<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>' + (q[0] + q[1]) + '</mn></math>';
+    }
+
+    function calansaddsub(name) {
+        var q = [];
+        q[0] = parseInt(document.getElementById(name + 'n1').innerHTML);
+        q[1] = parseInt(document.getElementById(name + 'n2').innerHTML);
+        q[2] = parseInt(document.getElementById(name + 'n3').innerHTML);
+        q[3] = parseInt(document.getElementById(name + 'n4').innerHTML);
+
+        var ans = 0;
+        switch (q[0]) {
+            case 1:
+                ans = q[1] - q[2] + q[3];
+                break;
+            case 2:
+                ans = q[1] - q[2] - q[3];
+                break;
+            case 3:
+                ans = q[1] - (q[2] + q[3]);
+                break;
+            case 4:
+                ans = q[1] - (q[2] - q[3]);
+                break;
+            case 5:
+                ans = (q[1] + q[2]) - q[3];
+                break;
+            case 6:
+                ans = (q[1] - q[2]) - q[3];
+                break;
+            case 7:
+                ans = q[1] + q[2] - q[3];
+                break;
+            case 8:
+                ans = q[1] - q[2] - q[3];
+                break;
+        }
+        document.getElementById(name + 'a').innerHTML = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mn>' + ans + '</mn></math>';
+    }
+
+
+    function genQR()
+    {
+        var qr = document.getElementById('qr');
+        var questions = document.getElementsByClassName('question-multi1');
+        for (var i = 0; i < questions.length; i++) {
+            var id = questions[i].id;
+            var val = getURL(id);
+            if (val[0] == null) {
+                // get value from span id
+                val[0] = document.getElementById(id + 'n1').innerHTML;
+                val[1] = document.getElementById(id + 'n2').innerHTML;
+            }
+            qr.innerHTML += id + '=' + val[0] + ',' + val[1] + '&';
+        }
+
+        questions = document.getElementsByClassName('question-multi2');
+        for (var i = 0; i < questions.length; i++) {
+            var id = questions[i].id;
+            var val = getURL(id);
+            if (val[0] == null) {
+                // get value from span id
+                val[0] = document.getElementById(id + 'n1').innerHTML;
+                val[1] = document.getElementById(id + 'n2').innerHTML;
+                val[2] = document.getElementById(id + 'n3').innerHTML;
+                val[3] = document.getElementById(id + 'n4').innerHTML;
+            }
+            qr.innerHTML += id + '=' + val[0] + ',' + val[1] + ',' + val[2] + ',' + val[3] + '&';
+        }
+
+        var url = window.location.href.split('?')[0] + '?';
+        fullurl = url + qr.innerHTML;
+
+        // QR Code
+        qr.innerHTML = '<br><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(fullurl) + '">';
+
+        // text link
+        qr.innerHTML += '<br><a href="' + fullurl + '">QR Code</a>';
+    }
+
+    function showhideans()
+    {
+        var button = document.getElementsByTagName('button')[0];
+        if (document.getElementById("showhide").innerHTML == 'Show answers') {
+            document.getElementById("showhide").innerHTML = 'Hide answers';
+            // clear all innerHTML values
+            var ans = document.getElementsByClassName('ans');
+            calall();
+        } else {
+            document.getElementById("showhide").innerHTML = 'Show answers';
+            var ans = document.getElementsByClassName('ans');
+            for (var i = 0; i < ans.length; i++) {
+                ans[i].innerHTML = '';
+            }
+        }
+    }
+
+    function reset() {
+        // clear parameters and reload
+        window.location.href = window.location.href.split('?')[0];
+    }
+
+    function dateAdd()
+    {
+        // get date from span id date
+        var date = new Date(document.getElementById('date').innerHTML);
+        // add 1 day
+        date.setDate(date.getDate() + 1);
+        // set innerHTML of span id date to new date
+        document.getElementById('date').innerHTML = date.toISOString().split('T')[0];
+    }
+
+    function dateMinus()
+    {
+        // get date from span id date
+        var date = new Date(document.getElementById('date').innerHTML);
+        // minus 1 day
+        date.setDate(date.getDate() - 1);
+        // set innerHTML of span id date to new date
+        document.getElementById('date').innerHTML = date.toISOString().split('T')[0];
+    }
+    
+    // update date
+    document.getElementById('date').innerHTML = new Date().toISOString().split('T')[0];
+    
+    getURLParams();
+    genQR();
+</script>
+
