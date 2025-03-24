@@ -9,6 +9,6 @@ A quick project with ugly UI, ugly structure, ugly algorithm and ugly variables.
 # Usage
 \- Print it out
 
-\- Scan QR code to view the questions on web again
+\- Scan QR code to view the questions on web for answer checking
 
-\- Show/Hide answers
+\- Click Show/Hide answers at the bottom
