@@ -553,7 +553,7 @@ Write the numbers in the spaces in ascending order
         fullurl = url + qr.innerHTML;
 
         // QR Code
-        qr.innerHTML = '<br><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(fullurl) + '">';
+        qr.innerHTML = '<br><img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=' + encodeURIComponent(fullurl) + '">';
 
         // text link
         qr.innerHTML += '<br><a href="' + fullurl + '">QR Code</a>';
